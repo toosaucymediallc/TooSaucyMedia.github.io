@@ -1,3 +1,4 @@
+/* Base Styles from Wix */
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 10px;
@@ -9,19 +10,99 @@ body {
     overflow-y: scroll;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    --scrollbar-width: 0px;
 }
 
+/* Root Variables (Color Palette and Units) */
+:root {
+    --color_0: 255, 255, 255;
+    --color_1: 255, 255, 255;
+    --color_2: 0, 0, 0;
+    --color_3: 237, 28, 36;
+    --color_4: 0, 136, 203;
+    --color_5: 255, 203, 5;
+    --color_6: 114, 114, 114;
+    --color_7: 176, 176, 176;
+    --color_8: 255, 255, 255;
+    --color_9: 114, 114, 114;
+    --color_10: 176, 176, 176;
+    --color_11: 250, 236, 225; /* Background Primary */
+    --color_12: 195, 181, 170;
+    --color_13: 140, 125, 114;
+    --color_14: 84, 70, 59; /* Text Secondary */
+    --color_15: 29, 14, 3; /* Text Primary */
+    --color_16: 163, 217, 207;
+    --color_17: 120, 179, 169;
+    --color_18: 1, 104, 85; /* Action Color */
+    --color_19: 1, 82, 67;
+    --color_20: 0, 52, 43;
+    --color_21: 177, 235, 214;
+    --color_22: 144, 215, 189;
+    --color_23: 2, 174, 112;
+    --color_24: 1, 130, 83;
+    --color_25: 1, 87, 56;
+    --color_26: 250, 198, 181;
+    --color_27: 245, 169, 143;
+    --color_28: 240, 91, 41;
+    --color_29: 160, 61, 27;
+    --color_30: 80, 30, 14;
+    --color_31: 221, 190, 166;
+    --color_32: 187, 152, 125;
+    --color_33: 119, 52, 0;
+    --color_34: 84, 36, 0;
+    --color_35: 36, 15, 0;
+    --color_36: 250, 236, 225;
+    --color_37: 29, 14, 3;
+    --color_38: 195, 181, 170;
+    --color_39: 140, 125, 114;
+    --color_40: 84, 70, 59;
+    --color_41: 1, 104, 85;
+    --color_42: 120, 179, 169; /* Accent 2 */
+    --color_43: 150, 142, 135;
+    --color_44: 250, 236, 225;
+    --color_45: 29, 14, 3;
+    --color_46: 29, 14, 3;
+    --color_47: 84, 70, 59; /* Line Color */
+
+    --wst-color-fill-background-primary: rgb(var(--color_11)); /* #faece1 */
+    --wst-color-fill-background-secondary: rgb(var(--color_12)); /* #c3b5aa */
+    --wst-color-text-primary: rgb(var(--color_15)); /* #1d0e03 */
+    --wst-color-text-secondary: rgb(var(--color_14)); /* #54463b */
+    --wst-color-action: rgb(var(--color_18)); /* #016855 */
+    --wst-color-line: rgb(var(--color_47)); /* #54463b */
+    --wst-font-style-h2: 20px; /* Placeholder; adjust based on Wix */
+    --one-unit: 1vw;
+    --section-max-width: 9999px;
+    --spx-stopper-max: 9999px;
+    --spx-stopper-min: 0px;
+    --browser-zoom: 1;
+}
+
+/* Reset Styles */
+a, abbr, acronym, address, applet, b, big, blockquote, button, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, footer, form, h1, h2, h3, h4, h5, h6, header, i, iframe, img, ins, kbd, label, legend, li, nav, object, ol, p, pre, q, s, samp, section, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, title, tr, tt, u, ul, var {
+    background: transparent;
+    border: 0;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+/* Header Styles */
 header#SITE_HEADER {
-    background-color: #f8f8f8; /* Default light gray; adjust based on Wix */
+    background-color: rgb(var(--wst-color-fill-background-primary));
     padding: 10px 20px;
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgb(var(--wst-color-line));
+    position: relative;
+    height: 87px; /* From #masterPage --header-height */
+    top: var(--top-offset, 0);
 }
 
 header#SITE_HEADER h1 {
     margin: 0;
-    font-size: 24px; /* Adjust based on Wix heading size */
-    color: #333; /* Default dark gray; match Wix text color */
+    font-size: 24px; /* Adjust based on Wix */
+    color: rgb(var(--wst-color-text-primary));
 }
 
 nav ul {
@@ -36,43 +117,103 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #007bff; /* Default blue; match Wix link color */
+    color: rgb(var(--wst-color-action)); /* #016855 */
     font-weight: bold;
 }
 
 nav ul li a:hover {
-    color: #0056b3; /* Default hover; adjust to Wix */
+    color: rgb(var(--color_19)); /* #015243 (darker shade) */
 }
 
+/* Main Content Styles */
 main#PAGES_CONTAINER {
-    max-width: 980px; /* Based on Wix section-max-width */
+    max-width: 980px; /* From #comp-kq5dfsdh --column-width */
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 0 20px; /* Adjusted for container width calc */
+    position: relative;
 }
 
 section {
     padding: 20px 0;
+    background-color: rgb(var(--wst-color-fill-background-secondary)); /* #c3b5aa */
 }
 
 section h2 {
-    font-size: 20px; /* Adjust based on Wix --wst-font-style-h2 */
-    color: #333;
+    font-size: var(--wst-font-style-h2, 20px);
+    color: rgb(var(--wst-color-text-primary));
 }
 
 section p {
-    color: #666; /* Default secondary text; match Wix */
+    color: rgb(var(--wst-color-text-secondary));
     line-height: 1.6;
 }
 
+/* Footer Styles */
 footer#SITE_FOOTER {
-    background-color: #f8f8f8; /* Match header; adjust to Wix */
+    background-color: rgb(var(--wst-color-fill-background-primary));
     padding: 10px 20px;
     text-align: center;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid rgb(var(--wst-color-line));
     font-size: 12px;
 }
 
-/* Responsive Design (Wix mobile optimization) */
+/* Background and Overlay Styles */
+.LWbAav {
+    background-color: var(--bg-overlay-color, transparent);
+    background-image: var(--bg-gradient, none);
+    transition: var(--inherit-transition, all 0.3s ease);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.MW5IWV {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: var(--mask-image, none);
+    mask-image: var(--mask-image, none);
+    -webkit-mask-position: var(--mask-position, 0);
+    mask-position: var(--mask-position, 0);
+    -webkit-mask-repeat: var(--mask-repeat, no-repeat);
+    mask-repeat: var(--mask-repeat, no-repeat);
+    -webkit-mask-size: var(--mask-size, 100%);
+    mask-size: var(--mask-size, 100%);
+    pointer-events: var(--fill-layer-background-media-pointer-events, auto);
+}
+
+/* Column and Grid Layout */
+#comp-kq5dfsd2 {
+    --padding: 0px;
+    --margin: 0px;
+    min-width: 980px;
+}
+
+.V5AUxf {
+    column-gap: var(--margin, 0px);
+    direction: var(--direction, ltr);
+    display: flex;
+    margin: 0 auto;
+    position: relative;
+    width: calc(100% - var(--padding, 0px) * 2);
+}
+
+.V5AUxf > * {
+    flex: var(--column-flex, 980) 1 0%;
+    direction: ltr;
+    left: 0;
+    margin-bottom: var(--padding, 0px);
+    margin-top: var(--padding, 0px);
+    min-width: 0;
+    position: relative;
+    top: 0;
+}
+
+/* Responsive Design */
 @media (max-width: 600px) {
     body.device-mobile-optimized {
         overflow-x: hidden;
@@ -82,6 +223,19 @@ footer#SITE_FOOTER {
         margin: 10px 0;
     }
     main#PAGES_CONTAINER {
-        padding: 20px 10px;
+        padding: 10px;
+    }
+    .V5AUxf {
+        flex-direction: column;
+    }
+    .V5AUxf > * {
+        flex: 1 0 100%;
+    }
+}
+
+/* Support for Custom Properties */
+@supports (container-type: inline-size) {
+    :root {
+        --one-unit: 1cqw;
     }
 }
