@@ -11,6 +11,8 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     --scrollbar-width: 0px;
+    padding-top: 87px; /* Match header height */
+    padding-bottom: 50px; /* Match footer height approximation */
 }
 
 /* Root Variables (Color Palette and Units) */
@@ -89,12 +91,16 @@ a, abbr, acronym, address, applet, b, big, blockquote, button, caption, center, 
 }
 
 /* Header Styles */
-header#SITE_HEADER {
+header#SITE_HEADER.fixed-header {
     background-color: rgb(var(--wst-color-fill-background-primary));
     padding: 10px 20px;
     text-align: center;
     border-bottom: 1px solid rgb(var(--wst-color-line));
-    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
     height: 87px; /* From #masterPage --header-height */
     top: var(--top-offset, 0);
 }
@@ -126,11 +132,19 @@ nav ul li a:hover {
 }
 
 /* Main Content Styles */
-main#PAGES_CONTAINER {
+main#PAGES_CONTAINER.V5AUxf {
     max-width: 980px; /* From #comp-kq5dfsdh --column-width */
     margin: 0 auto;
     padding: 0 20px; /* Adjusted for container width calc */
     position: relative;
+    min-height: 100vh; /* Ensure container fills height */
+}
+
+.page {
+    min-height: 100vh; /* Full viewport height for each "page" */
+    padding: 20px;
+    box-sizing: border-box;
+    scroll-margin-top: 87px; /* Offset for fixed header height */
 }
 
 section {
@@ -149,12 +163,17 @@ section p {
 }
 
 /* Footer Styles */
-footer#SITE_FOOTER {
+footer#SITE_FOOTER.fixed-footer {
     background-color: rgb(var(--wst-color-fill-background-primary));
     padding: 10px 20px;
     text-align: center;
     border-top: 1px solid rgb(var(--wst-color-line));
     font-size: 12px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
 }
 
 /* Background and Overlay Styles */
@@ -197,9 +216,11 @@ footer#SITE_FOOTER {
     column-gap: var(--margin, 0px);
     direction: var(--direction, ltr);
     display: flex;
+    flex-direction: column; /* Stack pages vertically */
     margin: 0 auto;
     position: relative;
     width: calc(100% - var(--padding, 0px) * 2);
+    min-height: 100vh; /* Ensure container fills height */
 }
 
 .V5AUxf > * {
@@ -211,6 +232,7 @@ footer#SITE_FOOTER {
     min-width: 0;
     position: relative;
     top: 0;
+    width: 100%; /* Full width for each page */
 }
 
 /* Responsive Design */
@@ -231,6 +253,20 @@ footer#SITE_FOOTER {
     .V5AUxf > * {
         flex: 1 0 100%;
     }
+    .fixed-header {
+        padding: 5px 10px;
+        height: 60px; /* Reduced for mobile */
+    }
+    .fixed-footer {
+        padding: 5px 10px;
+    }
+    body {
+        padding-top: 60px; /* Adjusted for mobile header */
+        padding-bottom: 40px; /* Adjusted for mobile footer */
+    }
+    .page {
+        scroll-margin-top: 60px; /* Adjusted for mobile header */
+    }
 }
 
 /* Support for Custom Properties */
@@ -239,3 +275,9 @@ footer#SITE_FOOTER {
         --one-unit: 1cqw;
     }
 }
+
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}
+
